@@ -55,10 +55,10 @@ This will:
 
 ```
 memory-tree/
-├── shared/                   # All profiles can read, nobody writes directly
+├── shared/                   # Human-maintained, all profiles can read
 │   ├── context.md            # Describes shared knowledge scope
 │   └── architecture.md
-├── default/                  # Default profile (read/write)
+├── default/                  # Agent profile (read/write)
 │   ├── context.md
 │   ├── projects/             # Topic: projects
 │   │   └── hermes/
@@ -67,7 +67,7 @@ memory-tree/
 │   └── preferences/          # Topic: preferences
 │       ├── context.md
 │       └── coding-style.md
-└── work/                     # Work profile (read/write)
+└── work/                     # Another agent profile (read/write)
     ├── context.md
     └── projects/
         └── api/
@@ -80,6 +80,17 @@ memory-tree/
 |---------|----------|-----------|
 | default | `default/` + `shared/` | `default/` only |
 | work | `work/` + `shared/` | `work/` only |
+| human | `shared/` + any profile | `shared/` directly |
+
+**About `shared/`:**
+
+The `shared/` directory is maintained by you (the human), not by agents. Use it for information all profiles need to know:
+
+- Project architecture and conventions
+- Team-wide decisions and standards
+- Reference material that doesn't belong to any single profile
+
+Edit `shared/` directly on GitHub or via git. Agents read it but don't write to it — this prevents conflicting edits from multiple profiles.
 
 Each `context.md` describes the node's purpose and scope. Knowledge entries are standalone markdown files.
 

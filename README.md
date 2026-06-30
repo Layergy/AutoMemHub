@@ -36,12 +36,34 @@ node ~/.agents/skills/AutoMemHub/scripts/status.js
 
 ```
 memory-tree/
-├── shared/           # All profiles can read
-├── default/          # Your default profile
+├── shared/           # Human-maintained, all profiles can read
+│   ├── context.md
+│   └── architecture.md
+├── default/          # Agent profile (read/write)
 │   ├── projects/
+│   │   └── hermes/
 │   └── preferences/
-└── work/             # Work profile
+└── work/             # Another agent profile (read/write)
+    └── projects/
 ```
+
+**Read/write rules:**
+
+| Profile | Can read | Can write |
+|---------|----------|-----------|
+| default | `default/` + `shared/` | `default/` only |
+| work | `work/` + `shared/` | `work/` only |
+| human | `shared/` + any profile | `shared/` directly |
+
+**About `shared/`:**
+
+The `shared/` directory is maintained by you (the human), not by agents. Use it for information all profiles need to know:
+
+- Project architecture and conventions
+- Team-wide decisions and standards
+- Reference material that doesn't belong to any single profile
+
+Edit `shared/` directly on GitHub or via git. Agents read it but don't write to it — this prevents conflicting edits from multiple profiles.
 
 ## Usage
 
