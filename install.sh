@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-SKILL_DIR="$HOME/.hermes/skills/memory/AutoMemHub"
+SKILL_DIR="$HOME/.agents/skills/AutoMemHub"
 CONFIG_DIR="$HOME/.config/AutoMemHub"
 CONFIG_FILE="$CONFIG_DIR/config.json"
 

@@ -5,13 +5,15 @@ GitHub-backed AI memory with hierarchical tree structure.
 ## Quick Start
 
 ```bash
-# 1. Install
+# 1. Clone and install
+git clone https://github.com/Layergy/AutoMemHub.git
+cd AutoMemHub
 bash install.sh
 
 # 2. Use
-node scripts/recall.js "topic"
-node scripts/record.js "category" --title "Title" --content "Content"
-node scripts/status.js
+node ~/.agents/skills/AutoMemHub/scripts/recall.js "topic"
+node ~/.agents/skills/AutoMemHub/scripts/record.js "category" --title "Title" --content "Content"
+node ~/.agents/skills/AutoMemHub/scripts/status.js
 ```
 
 ## What It Does
@@ -25,6 +27,7 @@ node scripts/status.js
 1. Create a private GitHub repo (e.g., `memory-tree`)
 2. Run `bash install.sh` — it will:
    - Check Node.js ≥ 18
+   - Install to `~/.agents/skills/AutoMemHub/`
    - Create config at `~/.config/AutoMemHub/config.json`
    - Prompt for repo and token
 3. Add directories to your repo: `shared/`, `default/`, etc.
@@ -45,14 +48,14 @@ memory-tree/
 ### Recall (before work)
 
 ```bash
-node scripts/recall.js "checkpoint bug"
-node scripts/recall.js "coding style" --profile=default
+node ~/.agents/skills/AutoMemHub/scripts/recall.js "checkpoint bug"
+node ~/.agents/skills/AutoMemHub/scripts/recall.js "coding style" --profile=default
 ```
 
 ### Record (after work)
 
 ```bash
-node scripts/record.js "projects/hermes" \
+node ~/.agents/skills/AutoMemHub/scripts/record.js "projects/hermes" \
   --title "Gateway checkpoint bug" \
   --content "Gateway doesn't pass checkpoints_enabled." \
   --tags "hermes,bug"
@@ -61,7 +64,7 @@ node scripts/record.js "projects/hermes" \
 ### Status
 
 ```bash
-node scripts/status.js
+node ~/.agents/skills/AutoMemHub/scripts/status.js
 ```
 
 ## Config
@@ -84,7 +87,7 @@ Config file: `~/.config/AutoMemHub/config.json`
 ## Uninstall
 
 ```bash
-bash uninstall.sh
+bash ~/.agents/skills/AutoMemHub/uninstall.sh
 ```
 
 Removes skill files, config, and cache. Does not delete your GitHub repo.

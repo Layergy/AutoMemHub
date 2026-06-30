@@ -37,17 +37,19 @@ Persistent memory system using GitHub as backend. Organized as a hierarchical tr
 
 ## Setup
 
-Run the installer:
+Run the installer from the cloned repo:
 
 ```bash
-bash ~/.hermes/skills/memory/AutoMemHub/install.sh
+git clone https://github.com/Layergy/AutoMemHub.git
+cd AutoMemHub
+bash install.sh
 ```
 
 This will:
 1. Check Node.js version
-2. Create config at `~/.config/AutoMemHub/config.json`
-3. Prompt for GitHub token
-4. Verify repo access
+2. Install skill to `~/.agents/skills/AutoMemHub/`
+3. Create config at `~/.config/AutoMemHub/config.json`
+4. Prompt for GitHub repo and token
 
 ## Tree Structure
 
@@ -72,7 +74,7 @@ memory-tree/
 ### Recall — Before Work
 
 ```bash
-node ~/.hermes/skills/memory/AutoMemHub/scripts/recall.js "topic or question"
+node ~/.agents/skills/AutoMemHub/scripts/recall.js "topic or question"
 ```
 
 Read results before proceeding. If `sync_status` is `stale` or `never`, mention uncertainty.
@@ -80,7 +82,7 @@ Read results before proceeding. If `sync_status` is `stale` or `never`, mention 
 ### Record — After Work
 
 ```bash
-node ~/.hermes/skills/memory/AutoMemHub/scripts/record.js "projects/hermes" \
+node ~/.agents/skills/AutoMemHub/scripts/record.js "projects/hermes" \
   --title "Short title" \
   --content "What was learned or decided" \
   --tags "tag1,tag2"
@@ -89,7 +91,7 @@ node ~/.hermes/skills/memory/AutoMemHub/scripts/record.js "projects/hermes" \
 ### Status
 
 ```bash
-node ~/.hermes/skills/memory/AutoMemHub/scripts/status.js
+node ~/.agents/skills/AutoMemHub/scripts/status.js
 ```
 
 ## Memory Entry Format
@@ -117,12 +119,12 @@ Known bug, issue #11409, waiting for upstream fix.
 
 ## Common Pitfalls
 
-1. **Forgetting to sync.** If `sync_status` is `stale`, run `node scripts/recall.js --sync` first
+1. **Forgetting to sync.** If `sync_status` is `stale`, run recall with `--sync` first
 2. **Recording transient info.** If it won't matter next week, don't record it
 3. **Wrong profile directory.** Check `--profile` flag matches your intended namespace
 
 ## Verification Checklist
 
-- [ ] `node scripts/status.js` shows `token_present: true`
-- [ ] `node scripts/recall.js "test"` returns results (or empty with `sync_status: fresh`)
-- [ ] `node scripts/record.js` writes to correct profile directory
+- [ ] `node ~/.agents/skills/AutoMemHub/scripts/status.js` shows `token_present: true`
+- [ ] `node ~/.agents/skills/AutoMemHub/scripts/recall.js "test"` returns results
+- [ ] `node ~/.agents/skills/AutoMemHub/scripts/record.js` writes to correct profile
