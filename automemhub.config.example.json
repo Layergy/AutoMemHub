@@ -1,0 +1,10 @@
+{
+  "repo": {
+    "owner": "your-github-username",
+    "name": "memory-tree",
+    "branch": "main"
+  },
+  "tokenEnv": "GITHUB_TOKEN",
+  "defaultProfile": "default",
+  "cacheTtlSeconds": 300
+}

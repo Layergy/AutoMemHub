@@ -1,0 +1,14 @@
+{
+  "name": "AutoMemHub",
+  "version": "0.3.0",
+  "description": "GitHub-backed AI memory with hierarchical tree structure.",
+  "private": false,
+  "license": "MIT",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}
