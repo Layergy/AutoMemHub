@@ -55,19 +55,33 @@ This will:
 
 ```
 memory-tree/
-├── shared/                   # All profiles can read
-│   ├── context.md
+├── shared/                   # All profiles can read, nobody writes directly
+│   ├── context.md            # Describes shared knowledge scope
 │   └── architecture.md
-├── default/                  # Default profile
+├── default/                  # Default profile (read/write)
 │   ├── context.md
-│   ├── projects/
+│   ├── projects/             # Topic: projects
 │   │   └── hermes/
-│   │       └── checkpoint-bug.md
-│   └── preferences/
+│   │   ├── context.md        # Describes hermes topic scope
+│   │   └── checkpoint-bug.md # Knowledge entry
+│   └── preferences/          # Topic: preferences
+│       ├── context.md
 │       └── coding-style.md
-└── work/                     # Work profile
-    └── context.md
+└── work/                     # Work profile (read/write)
+    ├── context.md
+    └── projects/
+        └── api/
+            └── auth-decisions.md
 ```
+
+**Read/write rules:**
+
+| Profile | Can read | Can write |
+|---------|----------|-----------|
+| default | `default/` + `shared/` | `default/` only |
+| work | `work/` + `shared/` | `work/` only |
+
+Each `context.md` describes the node's purpose and scope. Knowledge entries are standalone markdown files.
 
 ## Usage
 
